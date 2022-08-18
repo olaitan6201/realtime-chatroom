@@ -5,8 +5,8 @@
 
 	let user;
 
-	const unsubscribe = authState(auth).subscribe(usr => user = usr);
 	// const unsubscribe = authStateChanged();
+	const unsubscribe = authState(auth).subscribe(usr => user = usr);
 
 	const login = () => signInWithGoogle().then(usr => user = user);
 
@@ -15,7 +15,7 @@
 
 <main>
 	{#if user }
-		<Chatroom user on:logOut={logOut} />
+		<Chatroom user={user} logout={logOut} />
 	{:else}
 		<div class="login-form">
 			<button on:click={login}>

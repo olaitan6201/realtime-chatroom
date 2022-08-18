@@ -1,0 +1,107 @@
+main{
+    height: 100%;
+
+    .header{
+        width: 100%;
+        height: 50px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 10px;
+        border-bottom: 1px solid #ddd;
+
+        .logo{
+            font-size: 15px;
+            font-weight: 600;
+            color: #111;
+        }
+
+        button{
+            background-color: transparent;
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            color: #555;
+            font-size: 15px;
+            cursor: pointer;
+        }
+    }
+
+    .form{
+        display: flex;
+        width: 100%;
+        height: 40px;
+        border-top: 1px solid #ddd;
+
+        input{
+            flex: 1;
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #111;
+            padding: 10px;
+        }
+
+        button{
+            padding: 10px;
+            font-size: 20px;
+            color: #555;
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+        }
+    }
+
+    .messages{
+        width: 100%;
+        height: calc(100% - 90px);
+        padding: 10px;
+        overflow-y: scroll;
+    
+        &::-webkit-scrollbar{
+            width: 4px;
+            background-color: #fff;
+        }
+        &::-webkit-scrollbar-thumb{
+            width: 4px;
+            background-color: #888;
+        }
+
+        .message{
+            margin: 10px 0px;
+            display: flex;
+
+            &.my-message{
+                justify-content: flex-end;
+
+                .text{
+                    background-color: #555;
+                    color: #fff;
+
+                }
+            }
+
+            .avatar{
+                width: 30px;
+                height: 30px;
+                margin-right: 8px;
+
+                img{
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .text{
+                padding: 10px;
+                background-color: #f0f4f7;
+                color: #555;
+                font-size: 13px;
+                font-weight: 600;
+                max-width: fit-content;
+                flex: 1;
+                border-radius: 5px;
+            }
+        }
+    }
+}
