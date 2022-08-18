@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import "firebase/auth"
 import { getAuth, GoogleAuthProvider, onAuthStateChanged, signInWithPopup } from "firebase/auth";
 import "firebase/firestore"
-import { getFirestore } from "firebase/firestore";
+import { addDoc, collection, getDocs, getFirestore, orderBy, query } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: "AIzaSyDqaNToLTGvxqZCN_9BjxdrRKPJXKX3OEU",
@@ -32,18 +32,41 @@ export const signInWithGoogle = async () => {
     } catch (error) {
         console.log(error);
         return null;
-        // // Handle Errors here.
-        // const errorCode = error.code;
-        // const errorMessage = error.message;
-        // // The email of the user's account used.
-        // const email = error.customData.email;
-        // // The AuthCredential type that was used.
-        // const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
     }
 }
 
-export const authStateChanged = onAuthStateChanged(auth, (user) => {
-    if (user) return user.uid;
+export const authStateChanged = () => onAuthStateChanged(auth, (user) => {
+    if (user) return user;
     return null;
 });
+
+
+export const getChats = async () => {
+  const chatsRef = collection(db, "chats");
+  // const chats = collectionData(query, "id").pipe(startWith([]));
+  // return chats;
+  
+  const q = query(chatsRef, orderBy("sentAt", "asc"));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map(doc => doc.data());
+}
+
+
+export const sendMessage = async (user, message) => {
+  console.log(user);
+  try {
+    const docRef = await addDoc(collection(db, "chats"), {
+      uid: user.uid,
+      message: message,
+      avatar: user.photoURL,
+      sentAt: new Date()
+    });
+  
+    console.log("Document written with ID: ", docRef.id);
+
+    return true;
+  } catch (e) {
+    console.error("Error adding document: ", e);
+    return false;
+  }
+}
