@@ -53,7 +53,6 @@ export const getChats = async () => {
 
 
 export const sendMessage = async (user, message) => {
-  console.log(user);
   try {
     const docRef = await addDoc(collection(db, "chats"), {
       uid: user.uid,
@@ -62,11 +61,11 @@ export const sendMessage = async (user, message) => {
       sentAt: new Date()
     });
   
-    console.log("Document written with ID: ", docRef.id);
+    // console.log("Document written with ID: ", docRef.id);
 
     return true;
   } catch (e) {
-    console.error("Error adding document: ", e);
+    // console.error("Error adding document: ", e);
     return false;
   }
 }
