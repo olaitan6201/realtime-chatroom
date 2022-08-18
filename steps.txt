@@ -1,0 +1,11 @@
+npx degit sveltejs/template realtime-chatapp
+cd realtime-chatapp
+yarn
+yarn add rxfire firebase rxjs
+cd src/
+touch firebase.js
+touch Chatroom.svelte
+cd ..
+
+Libraries required
+https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css
