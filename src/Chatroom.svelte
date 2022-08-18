@@ -37,7 +37,7 @@
             </div>
             {:else}
             <div class="message other-message">
-                <div class="avatart">
+                <div class="avatar">
                     <img src={chat.avatar} alt="" />
                 </div>
                 <div class="text">
