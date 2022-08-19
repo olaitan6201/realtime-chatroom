@@ -26,7 +26,7 @@
 	{/if}
 </main>
 
-<style type="text/scss">
+<style lang="scss">
 	main{
 		position: fixed;
 		top: 50%;

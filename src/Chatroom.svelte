@@ -55,6 +55,6 @@
     </div>
 </main>
 
-<style type="text/scss">
-    @import './styles/chatroom.scss'
+<style lang="scss">
+    @import './styles/chatroom.scss';
 </style>
